@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
     constructor(private store: Store<AllStates>) {}
 
     ngOnInit() {
-        // setTimeout(() => {
         interval(1000).pipe(take(5)).subscribe(d => {
             console.log('dispatching...');
             this.store.dispatch<ContactsActions>(new LoadContacts({
@@ -26,7 +25,6 @@ export class AppComponent implements OnInit {
                 }]
             }));
         });
-        // }, 2000);
     }
 
     get contacts() {
