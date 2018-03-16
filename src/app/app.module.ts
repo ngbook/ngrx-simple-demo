@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './reducers';
-import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 
+// import { ActionReducerMap } from '@ngrx/store';
+// const reducers: ActionReducerMap<any> = {};
 
 @NgModule({
     declarations: [
@@ -15,10 +16,11 @@ import { environment } from '../environments/environment';
     ],
     imports: [
         BrowserModule,
-        StoreModule.forRoot(reducers, {
-            metaReducers
+        StoreModule.forRoot({}),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25
         }),
-        !environment.production ? StoreDevtoolsModule.instrument() : []
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

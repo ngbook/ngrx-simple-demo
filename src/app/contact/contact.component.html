@@ -1,0 +1,6 @@
+<h2>Contact list</h2>
+<div>
+    <ul *ngFor="let contact of contacts | async">
+        <li>{{contact.username}}</li>
+    </ul>
+</div>
