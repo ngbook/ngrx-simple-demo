@@ -25,7 +25,7 @@ export class ContactComponent implements OnInit {
             select('contact'), // 先取出contact对应的reducer
             select(fromContacts.selectAll),
             map((d: any) => {
-                console.log(d);
+                // console.log(d);
                 return d;
             })
         );
@@ -34,18 +34,6 @@ export class ContactComponent implements OnInit {
         //     console.log(d);
         // });
 
-        interval(1000).pipe(take(5)).subscribe(d => {
-            console.log('dispatching...');
-            const contact = {
-                id: '' + d,
-                username: 'abc' + d,
-                avatar: 'xxx' + d,
-            };
-
-            this.store.dispatch(new contactAction.AddContact({
-                contact: contact
-            }));
-        });
     }
 
 }

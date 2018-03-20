@@ -3,4 +3,5 @@
     <ul *ngFor="let contact of contacts | async">
         <li>{{contact.username}}</li>
     </ul>
+    <div *ngIf="!(contacts | async)?.length">如果你看到这些文字，请刷新本页面</div>
 </div>

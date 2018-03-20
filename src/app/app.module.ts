@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
 
 // import { ActionReducerMap } from '@ngrx/store';
 // const reducers: ActionReducerMap<any> = {};
@@ -17,9 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     imports: [
         BrowserModule,
         StoreModule.forRoot({}),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25
-        }),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
         AppRoutingModule,
     ],
     providers: [],
