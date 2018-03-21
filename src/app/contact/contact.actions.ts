@@ -4,6 +4,8 @@ import { Contact } from './contact.model';
 
 export enum ContactActionTypes {
     LoadContacts = '[Contact] Load Contacts',
+    FetchContacts = '[Contact] Fetch Contacts',
+    ContactsReqErr = '[Contact] Fail to Fetch Contacts',
     AddContact = '[Contact] Add Contact',
     UpsertContact = '[Contact] Upsert Contact',
     AddContacts = '[Contact] Add Contacts',
@@ -19,6 +21,18 @@ export class LoadContacts implements Action {
     readonly type = ContactActionTypes.LoadContacts;
 
     constructor(public payload: { contacts: Contact[] }) { }
+}
+
+export class FetchContacts implements Action {
+    readonly type = ContactActionTypes.FetchContacts;
+
+    constructor(public payload: { pageSize?: number, start?: number }) { }
+}
+
+export class ContactsReqErr implements Action {
+    readonly type = ContactActionTypes.ContactsReqErr;
+
+    constructor(public payload: string ) { } // payload => err msg
 }
 
 export class AddContact implements Action {
@@ -75,6 +89,8 @@ export class ClearContacts implements Action {
 
 export type ContactActions =
     LoadContacts
+    | FetchContacts
+    | ContactsReqErr
     | AddContact
     | UpsertContact
     | AddContacts

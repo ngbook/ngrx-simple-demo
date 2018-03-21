@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 // import { ActionReducerMap } from '@ngrx/store';
 // const reducers: ActionReducerMap<any> = {};
@@ -18,6 +19,7 @@ import { environment } from '../environments/environment';
     imports: [
         BrowserModule,
         StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         AppRoutingModule,
     ],

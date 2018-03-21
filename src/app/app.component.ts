@@ -6,6 +6,8 @@ import { take } from 'rxjs/operators';
 import * as contactAction from './contact/contact.actions';
 import * as fromContacts from './contact/contact.reducer';
 
+const PAGE_SIZE = 5;
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -15,16 +17,13 @@ export class AppComponent implements AfterViewInit {
     constructor(private store: Store<fromContacts.State>) { }
 
     ngAfterViewInit() {
-        interval(1000).pipe(take(5)).subscribe(d => {
+        interval(3000).pipe(
+            take(3)
+        ).subscribe((i) => {
             console.log('dispatching...');
-            const contact = {
-                id: '' + d,
-                username: 'abc' + d,
-                avatar: 'xxx' + d,
-            };
-
-            this.store.dispatch(new contactAction.AddContact({
-                contact: contact
+            this.store.dispatch(new contactAction.FetchContacts({
+                start: i * PAGE_SIZE,
+                pageSize: PAGE_SIZE
             }));
         });
     }

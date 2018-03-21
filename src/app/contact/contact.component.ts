@@ -25,15 +25,9 @@ export class ContactComponent implements OnInit {
             select('contact'), // 先取出contact对应的reducer
             select(fromContacts.selectAll),
             map((d: any) => {
-                // console.log(d);
                 return d;
             })
         );
-        // this.contacts.subscribe();
-        // this.contacts.subscribe(d => {
-        //     console.log(d);
-        // });
-
     }
 
 }
