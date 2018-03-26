@@ -8,7 +8,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Msg } from '../msg.model';
 import { MsgActions, MsgActionTypes } from './msg.actions';
 import { Contact } from '../../contact/contact.model';
-import { MsgTool } from './msg.tool';
 
 export interface State extends EntityState<Msg> {
     receiver?: Contact ;
@@ -73,7 +72,7 @@ export function reducer(
         }
 
         case MsgActionTypes.AutoRsp: {
-            const msg = MsgTool.packMsg('ok');
+            const msg = action.payload.msg;
             msg['sender'] = state.receiver;
             return adapter.addOne(msg, state);
         }

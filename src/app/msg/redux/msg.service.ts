@@ -1,7 +1,9 @@
+import { Injectable } from '@angular/core';
 
-export class MsgTool {
+@Injectable()
+export class MsgService {
 
-    static packMsg(content: string) {
+    packMsg(content: string) {
         const now = new Date();
         return {
             id: now.getTime(),

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { map, filter, combineLatest, take } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Contact } from '../contact/contact.model';
-import { MsgTool } from './redux/msg.tool';
+import { MsgService } from './redux/msg.service';
 import { Msg } from './msg.model';
 
 @Component({
@@ -35,9 +35,9 @@ export class MsgComponent implements OnInit {
         }),
     );
 
-    constructor(private store: Store<AllState>) { }
-    ngOnInit() {
-    }
+    constructor(private store: Store<AllState>,
+        private msgService: MsgService) { }
+    ngOnInit() {}
 
     sendMsg() {
         if (!this.text.trim()) {
@@ -45,7 +45,7 @@ export class MsgComponent implements OnInit {
         }
         this.store.dispatch(
             new AddMsg({
-                msg: MsgTool.packMsg(this.text)
+                msg: this.msgService.packMsg(this.text)
             })
         );
         this.text = '';

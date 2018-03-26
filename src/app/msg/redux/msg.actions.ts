@@ -84,7 +84,7 @@ export class ChangeReceiver implements Action {
 
 export class AutoRsp implements Action {
     readonly type = MsgActionTypes.AutoRsp;
-    constructor() {
+    constructor(public payload: {msg: Msg}) {
         console.log('create an auto rsp');
     }
 }

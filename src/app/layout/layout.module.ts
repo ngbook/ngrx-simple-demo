@@ -14,6 +14,7 @@ import { ContactEffects } from '../contact/redux/contact.effects';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { MsgComponent } from '../msg/msg.component';
 import { MsgEffects } from '../msg/redux/msg.effects';
+import { MsgService } from '../msg/redux/msg.service';
 
 @NgModule({
     imports: [
@@ -25,6 +26,9 @@ import { MsgEffects } from '../msg/redux/msg.effects';
         EffectsModule.forFeature([ContactEffects, MsgEffects]),
         LayoutRoutingModule,
         NgButtonModule
+    ],
+    providers: [
+        MsgService,
     ],
     declarations: [
         ContactComponent,
