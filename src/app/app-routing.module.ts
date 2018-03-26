@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
-    path: 'contact',
-    loadChildren: 'app/contact/contact.module#ContactModule'
-}, {
-    path: '**',
-    redirectTo: 'contact'
+    path: '',
+    loadChildren: 'app/layout/layout.module#LayoutModule'
 }];
 
 @NgModule({

@@ -1,7 +1,17 @@
-<h2>Contact list</h2>
-<div>
-    <ul *ngFor="let contact of contacts | async">
-        <li>{{contact.username}}</li>
+<div class="users-wrap">
+    <h2 class="title">联系人列表</h2>
+    <ul class="contacts">
+        <li *ngFor="let contact of contacts | async"
+            class="contact" (click)="selectContact(contact)"
+            [class.selected]="contact === (selected | async)">
+            <div class="img-wrap">
+                <img src="{{contact.avatar}}" alt="{{contact.username}}" class="avatar">
+            </div>
+            <div class="txt-wrap">
+                <h3 class="username">{{contact.nickname}}</h3>
+                <p class="desc">{{contact.username}}-{{contact.tel}}</p>
+            </div>
+        </li>
     </ul>
-    <div *ngIf="!(contacts | async)?.length">如果你看到这些文字，请刷新本页面</div>
+    <div *ngIf="!(contacts | async)?.length" class="loading">加载中...</div>
 </div>

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Action } from '@ngrx/store';
-import { Contact } from './contact.model';
+import { Contact } from '../contact.model';
 import {
     ContactActions,
     ContactActionTypes,

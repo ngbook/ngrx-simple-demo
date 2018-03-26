@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import { Contact } from './contact.model';
+import { Contact } from '../contact.model';
 
 export enum ContactActionTypes {
     LoadContacts = '[Contact] Load Contacts',

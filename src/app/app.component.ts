@@ -1,12 +1,11 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { interval } from 'rxjs/observable/interval';
-import { take } from 'rxjs/operators';
+import { timer } from 'rxjs/observable/timer';
 
-import * as contactAction from './contact/contact.actions';
-import * as fromContacts from './contact/contact.reducer';
+import * as contactAction from './contact/redux/contact.actions';
+import * as fromContacts from './contact/redux/contact.reducer';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 20;
 
 @Component({
     selector: 'app-root',
@@ -17,12 +16,9 @@ export class AppComponent implements AfterViewInit {
     constructor(private store: Store<fromContacts.State>) { }
 
     ngAfterViewInit() {
-        interval(3000).pipe(
-            take(3)
-        ).subscribe((i) => {
-            console.log('dispatching...');
+        timer(3000).subscribe(() => {
             this.store.dispatch(new contactAction.FetchContacts({
-                start: i * PAGE_SIZE,
+                start: 20,
                 pageSize: PAGE_SIZE
             }));
         });

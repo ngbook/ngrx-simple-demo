@@ -1,6 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Contact } from './contact.model';
+import { Contact } from '../contact.model';
 import { ContactActions, ContactActionTypes } from './contact.actions';
+import { createFeatureSelector } from '@ngrx/store';
 
 export interface State extends EntityState<Contact> {
     // additional entities state properties
@@ -63,9 +64,11 @@ export function reducer(
     }
 }
 
+export const contactState = createFeatureSelector<State>('contact');
+
 export const {
     selectIds,
     selectEntities,
     selectAll,
     selectTotal,
-} = adapter.getSelectors();
+} = adapter.getSelectors(contactState);
