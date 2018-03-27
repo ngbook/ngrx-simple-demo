@@ -18,16 +18,17 @@ import { Msg } from './msg.model';
 export class MsgComponent implements OnInit {
     text = '';
 
+    // 先取出聊天好友
     receiver = this.store.pipe(
         select(fromMsg.selectReceiver)
     );
+    // 再取出跟这个好友相关的消息
     msgs = this.store.pipe(
         select(fromMsg.selectAll), // 取出全部
         combineLatest(this.receiver), // 整合 receiver 数据以下用
         map(obs => {
             const msgs = obs[0];
             const receiver = obs[1];
-            // console.log(msgs, receiver);
             return msgs.filter( // 根据 receiver 信息做过滤
                 (msg: any) => msg.receiver === receiver
                     || msg.sender === receiver
