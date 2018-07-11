@@ -67,8 +67,10 @@ export function reducer(
         }
 
         case MsgActionTypes.ChangeReceiver: {
-            return Object.assign({}, state, {
-                receiver: action.payload.target});
+            return {
+                ...state,
+                receiver: action.payload.target
+            };
         }
 
         case MsgActionTypes.AutoRsp: {

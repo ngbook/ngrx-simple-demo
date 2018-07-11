@@ -41,7 +41,8 @@ export class MsgComponent implements OnInit {
     ngOnInit() {}
 
     sendMsg() {
-        if (!this.text.trim()) {
+        this.text = this.text && this.text.trim();
+        if (!this.text) {
             return;
         }
         this.store.dispatch(
